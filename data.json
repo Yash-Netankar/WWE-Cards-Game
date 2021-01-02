@@ -48,5 +48,15 @@
         "stamina":"Stamina: 85",
         "tough":"Toughness: 83",
         "img":"./images/players/Jhon.png"
+    },
+    {
+        "name":"Kane",
+        "str": "Str: 85",
+        "height":"Height: 7.0",
+        "weight":"Weight: 323",
+        "agility":"Agility: 70",
+        "stamina":"Stamina: 70",
+        "tough":"Toughness: 80",
+        "img":"./images/players/Kane.png"
     }
 ]
