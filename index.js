@@ -44,7 +44,7 @@ play_btn.addEventListener("click", ()=>{
 
 
 /*********************************
-Function to handle game varients
+Function receiving data
 ************************************/
 const sendData = (no_of_players=2, vs="computer")=>{
     if(vs==="computer"){
@@ -53,7 +53,7 @@ const sendData = (no_of_players=2, vs="computer")=>{
 }
 
 /*********************************
-PLAYER vs COMP
+getting players from ajax call
 ************************************/
 const computer = (no_of_players)=>{
     let req = new XMLHttpRequest();
@@ -65,7 +65,7 @@ const computer = (no_of_players)=>{
     req.send();
 }
 
-// rendering html for players
+// rendering html for all players
 const renderHTML = (no_of_players, data) =>{
     let card_deck = `
     <div class="card_deck">
@@ -106,10 +106,10 @@ const renderHTML = (no_of_players, data) =>{
         document.querySelector(".card_game_container").insertAdjacentHTML("beforeend",card_deck);
     }
     
-    // showing player info on card
+    // calling func. to show player info on cards
     ShowPlayerAttr(data);
     
-    // showing cards on clicking the attribute btn 
+    // showing cards on clicking the attribute btn on deck
     const attrBtn = document.querySelectorAll(".attrBtn");
     let cards = document.querySelectorAll(".card");
     attrBtn.forEach(btn=>{
@@ -134,7 +134,6 @@ const ShowPlayerAttr = (data)=>{
     img=document.querySelectorAll(".superstar img");
 
     pname.forEach((item, i)=>{
-        let rand_no = Math.floor(Math.random()*4);
         item.textContent = data[i].name;
     })
     str.forEach((item, i)=>{
@@ -162,7 +161,5 @@ const ShowPlayerAttr = (data)=>{
 
 // game logic
 const play = (data)=>{
-    // document.querySelector(".card").classList.add("show");
     console.log("Function running")
-
 }
