@@ -22,13 +22,47 @@ let vs_btn_value;
 
 
 /*********************************
+Button Clicks and sending data
+************************************/
+btns.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+        audio.play();
+        no_of_players=btn.value;
+    })
+});
+vs_btns.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+        audio.play();
+        vs_btn_value=btn.value;
+    })
+});
+play_btn.addEventListener("click", ()=>{
+    document.querySelector(".container").classList.add("hide");
+    document.querySelector(".card_game_container").classList.add("show");
+    sendData(no_of_players, vs_btn_value);
+});
+
+
+/*********************************
+Function to handle game varients
+************************************/
+const sendData = (no_of_players=2, vs="computer")=>{
+    if(vs==="computer"){
+        computer(no_of_players);
+    }
+}
+
+/*********************************
 PLAYER vs COMP
 ************************************/
-
-const play = (data)=>{
-    // document.querySelector(".card").classList.add("show");
-    console.log("Function running")
-
+const computer = (no_of_players)=>{
+    let req = new XMLHttpRequest();
+    req.open("GET", "http://127.0.0.1:5500/data.json", true);
+    req.onload = ()=>{
+        const data = JSON.parse(req.responseText);
+        renderHTML(no_of_players, data);
+    }
+    req.send();
 }
 
 // rendering html for players
@@ -75,7 +109,7 @@ const renderHTML = (no_of_players, data) =>{
     // showing player info on card
     ShowPlayerAttr(data);
     
-    // on clicking the attribute btn showing cards
+    // showing cards on clicking the attribute btn 
     const attrBtn = document.querySelectorAll(".attrBtn");
     let cards = document.querySelectorAll(".card");
     attrBtn.forEach(btn=>{
@@ -88,7 +122,7 @@ const renderHTML = (no_of_players, data) =>{
     })
 }
 
-
+// showing palyer info on cards
 const ShowPlayerAttr = (data)=>{
     pname=document.querySelectorAll(".player_name");
     str=document.querySelectorAll(".str");
@@ -126,44 +160,9 @@ const ShowPlayerAttr = (data)=>{
     })
 }
 
-const computer = (no_of_players)=>{
-    let req = new XMLHttpRequest();
-    req.open("GET", "http://127.0.0.1:5500/data.json", true);
-    req.onload = ()=>{
-        const data = JSON.parse(req.responseText);
-        renderHTML(no_of_players, data);
-    }
-    req.send();
+// game logic
+const play = (data)=>{
+    // document.querySelector(".card").classList.add("show");
+    console.log("Function running")
+
 }
-
-
-/*********************************
-Function to handle game varients
-************************************/
-const sendData = (no_of_players=2, vs="computer")=>{
-    if(vs==="computer"){
-        computer(no_of_players);
-    }
-}
-
-
-/*********************************
-Button Clicks and sending data
-************************************/
-btns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-        audio.play();
-        no_of_players=btn.value;
-    })
-});
-vs_btns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-        audio.play();
-        vs_btn_value=btn.value;
-    })
-});
-play_btn.addEventListener("click", ()=>{
-    document.querySelector(".container").classList.add("hide");
-    document.querySelector(".card_game_container").classList.add("show");
-    sendData(no_of_players, vs_btn_value);
-});
