@@ -1,0 +1,52 @@
+[
+    {
+        "name":"Undertaker",
+        "str": "Str: 87",
+        "height":"Height: 6.10",
+        "weight":"Weight: 328",
+        "agility":"Agility: 75",
+        "stamina":"Stamina: 88",
+        "tough":"Toughness: 85",
+        "img":"./images/players/Undertaker.png"
+    },
+    {
+        "name":"Brock Lesnar",
+        "str": "Str: 90",
+        "height":"Height: 6.4",
+        "weight":"Weight: 295",
+        "agility":"Agility: 64",
+        "stamina":"Stamina: 75",
+        "tough":"Toughness: 87",
+        "img":"./images/players/Brock2.png"
+    },
+    {
+        "name":"Goldberg",
+        "str": "Str: 92",
+        "height":"Height: 6.4",
+        "weight":"Weight: 290",
+        "agility":"Agility: 70",
+        "stamina":"Stamina: 70",
+        "tough":"Toughness: 90",
+        "img":"./images/players/goldberg.png"
+    },
+    {
+        "name":"Roman Reigns",
+        "str": "Str: 80",
+        "height":"Height: 6.2",
+        "weight":"Weight: 264",
+        "agility":"Agility: 68",
+        "stamina":"Stamina: 70",
+        "tough":"Toughness: 76",
+        "img":"./images/players/Roman.png"
+    },
+    {
+        "name":"Jhon Cena",
+        "str": "Str: 82",
+        "height":"Height: 6.1",
+        "weight":"Weight: 251",
+        "agility":"Agility: 80",
+        "stamina":"Stamina: 85",
+        "tough":"Toughness: 83",
+        "img":"./images/players/Jhon.png"
+    }
+]

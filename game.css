@@ -1,0 +1,157 @@
+.card_game_container {
+  display: none !important;
+}
+/* js class to show game */
+.card_game_container.show {
+  display: grid !important;
+  width: 100%;
+  background: #ecf0f1;
+  background-color: #333;
+  gap: 1rem;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+/*********
+CARD DECK
+***********/
+.card_game_container .card_deck {
+  margin: 5rem auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+    url("./images/superstars.png");
+  background-size: cover;
+  background-position: center center;
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  transition: 0.3s;
+  transform: skewY(-10deg);
+  position: relative;
+}
+.card_deck::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.4s;
+  background: linear-gradient(#8890a367, #1c2025cb);
+  border: 1px solid black;
+}
+.card_deck::after {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  width: 1.5rem;
+  height: 100%;
+  transform-origin: left;
+  transform: skewY(45deg);
+  transition: 0.4s;
+  background: inherit;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.card_game_container .card_deck .logo {
+  width: 40%;
+}
+.card_game_container .card_deck .logo img {
+  width: 100%;
+  height: 100%;
+}
+.card_game_container .card_deck h1 {
+  color: #ecf0f1;
+  font-weight: 600;
+  font-family: "Poppins";
+  text-shadow: 1px 1px 3px black;
+}
+
+/*****************
+Attribute Buttons
+*******************/
+.card_deck .attrBtn_div button {
+  background: transparent;
+  color: #ecf0f1;
+  outline: none;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  margin: 0.2rem;
+  transition: 0.2s;
+  border: 1px solid #ecf0f1;
+  font-size: 0.9rem;
+  text-shadow: 0 0 1px #444;
+}
+.card_deck .attrBtn_div button:hover {
+  background: #ecf0f1;
+  color: #1e272e;
+}
+.card_deck .attrBtn_div h1 {
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+}
+
+/*****
+CARD
+*****/
+.card_deck .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 120%;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.452);
+  border-radius: 5px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  transform: skewY(10deg) translateY(-20px) scale(0);
+  transition: 0.3s;
+}
+/* js class to show card */
+.card.show {
+  transform: skewY(10deg) translateY(-20px) scale(1);
+}
+.card_deck .card .superstar {
+  width: 60%;
+  max-height: 10vh;
+  margin: 0.5rem auto;
+  text-align: center;
+}
+.card_deck .card .superstar img {
+  width: 100%;
+}
+.card_deck .card .player_name {
+  text-align: center;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-family: "Poppins";
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.582);
+  text-shadow: 0px 1px 3px goldenrod;
+}
+.card_deck .card .info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: white;
+}
+.card_deck .card .info section {
+  background: linear-gradient(#2f3542, #ff4757);
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.4rem;
+  cursor: pointer;
+}
+.card_deck .card .info section:hover {
+  background: linear-gradient(#ff4757, #2f3542);
+}

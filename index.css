@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 62.5%;
+  font-family: "Roboto";
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #333;
+}
+.container.hide {
+  display: none;
+}
+.container .video_container {
+  position: absolute;
+  top: 0;
+  left: -250px;
+  width: 100%;
+}
+.video_container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  transform: translateX(250px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  -ms-backdrop-filter: blur(5px);
+}
+.container .glass {
+  width: 80%;
+  height: 70%;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: transparent;
+  z-index: 1;
+  box-shadow: 0 1px 5px 2px #e67e22;
+  color: #f1c40f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.glass::-webkit-scrollbar {
+  width: 5px;
+}
+.glass::-webkit-scrollbar-track {
+  background: rgba(255, 166, 0, 0.651);
+}
+.glass::-webkit-scrollbar-thumb {
+  background: linear-gradient(#e67e22, #f1c40f);
+  border-radius: 10px;
+}
+.glass .heading_1,
+.heading_2,
+.heading_0 {
+  font-size: 1.9rem;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 1px black;
+}
+.glass .heading_2 {
+  font-size: 1.1rem;
+}
+.glass .heading_0 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+.glass .btns_div,
+.container .vs {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.glass .btns_div button,
+.glass .play_btn,
+.container .vs .vs_button {
+  font-size: 1.6rem;
+  font-family: "Poppins";
+  padding: 0.5rem 1.2rem;
+  outline: none;
+  border: none;
+  background: #f1c40f;
+  box-shadow: 0 0 10px 3px rgba(240, 236, 12, 0.815);
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.glass .btns_div button:hover,
+.glass .btns_div button:focus,
+.glass .play_btn:hover,
+.container .vs .vs_button:hover,
+.container .vs .vs_button:focus {
+  background: #e67e22;
+  color: #333;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+}
+.glass .play_btn {
+  margin-top: 3rem;
+  padding: 0.5rem 2rem;
+}
+.container .vs {
+  width: 100%;
+}
