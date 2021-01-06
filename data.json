@@ -1,7 +1,7 @@
 [
     {
         "name":"Undertaker",
-        "str": "Str: 87",
+        "str": "Str: 85",
         "height":"Height: 6.10",
         "weight":"Weight: 328",
         "agility":"Agility: 75",
@@ -11,7 +11,7 @@
     },
     {
         "name":"Brock Lesnar",
-        "str": "Str: 89",
+        "str": "Str: 87",
         "height":"Height: 6.4",
         "weight":"Weight: 295",
         "agility":"Agility: 64",
@@ -21,7 +21,7 @@
     },
     {
         "name":"Goldberg",
-        "str": "Str: 91",
+        "str": "Str: 90",
         "height":"Height: 6.4",
         "weight":"Weight: 290",
         "agility":"Agility: 70",
@@ -51,7 +51,7 @@
     },
     {
         "name":"Kane",
-        "str": "Str: 85",
+        "str": "Str: 89",
         "height":"Height: 7.0",
         "weight":"Weight: 323",
         "agility":"Agility: 70",
@@ -101,7 +101,7 @@
     },
     {
         "name":"Great Khali",
-        "str": "Str: 92",
+        "str": "Str: 93",
         "height":"Height: 7.1",
         "weight":"Weight: 347",
         "agility":"Agility: 54",

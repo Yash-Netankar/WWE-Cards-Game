@@ -19,7 +19,11 @@ const audio = new Audio("./button_audio.mp3");
 // global vars
 let no_of_players;
 let vs_btn_value;
-let arttr_btn_value;
+let arttr_btn_value = "strength";
+
+// global arrays
+let man_attr_arr = [];
+let all_attr_arr = [];
 
 //arrays for players
 let player_arr1 = [];
@@ -170,7 +174,8 @@ const ShowPlayerAttr = (data)=>{
         else(
             alert(`Enter Card Number Between 1 to ${player_arr1.length}`)
         )
-    })
+        console.log(man_attr_arr ,all_attr_arr);
+    });
 }
 // manual player game logic
 const manual_player_card = (card_no) =>{
@@ -197,6 +202,10 @@ const manual_player_card = (card_no) =>{
     // show the card now
     let card = document.querySelector(".manual_player_card_deck .manual_player_card");
     card.classList.add("show");
+
+    if(arttr_btn_value == "strength"){
+        play( null ,parseInt(player_arr1[card_no].str.slice(-2)), true);
+    }
 }
 
 // computer player game logic
@@ -242,8 +251,6 @@ const computer_player = ()=>{
         showCompCard(cnt);
         cnt++;
         showCompCard(cnt);
-        // cnt++;
-        // showCompCard(cnt);
     }
 }
 
@@ -290,9 +297,19 @@ const showCompCard = (cnt)=>{
     // showing up comp card
     let comp_card = document.querySelector(`.card_deck_comp${cnt} .card_comp`);
     comp_card.classList.add("show");
+
+    if(arttr_btn_value == "strength"){
+        play( arr ,parseInt(arr[card_no].str.slice(-2)));
+    }
 }
 
 // game logic
-const play = (data)=>{
-    console.log("Function running")
+const play = (arr ,attr, manual_player=false)=>{
+    if(manual_player){
+        man_attr_arr.push(attr);
+    }
+    all_attr_arr.push(attr);
+    let lowest_attr = all_attr_arr.sort((a,b)=>a-b);
+    console.log("Sorted array" ,lowest_attr);
+    
 }
