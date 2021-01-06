@@ -11,7 +11,7 @@
     },
     {
         "name":"Brock Lesnar",
-        "str": "Str: 90",
+        "str": "Str: 89",
         "height":"Height: 6.4",
         "weight":"Weight: 295",
         "agility":"Agility: 64",
@@ -21,7 +21,7 @@
     },
     {
         "name":"Goldberg",
-        "str": "Str: 92",
+        "str": "Str: 91",
         "height":"Height: 6.4",
         "weight":"Weight: 290",
         "agility":"Agility: 70",
@@ -58,5 +58,75 @@
         "stamina":"Stamina: 70",
         "tough":"Toughness: 80",
         "img":"./images/players/Kane.png"
+    },
+    {
+        "name":"Triple H",
+        "str": "Str: 80",
+        "height":"Height: 6.4",
+        "weight":"Weight: 255",
+        "agility":"Agility: 73",
+        "stamina":"Stamina: 80",
+        "tough":"Toughness: 85",
+        "img":"./images/players/HHH.png"
+    },
+    {
+        "name":"Rey Mysterio",
+        "str": "Str: 60",
+        "height":"Height: 5.6",
+        "weight":"Weight: 175",
+        "agility":"Agility: 91",
+        "stamina":"Stamina: 86",
+        "tough":"Toughness: 68",
+        "img":"./images/players/ReyMys.png"
+    },
+    {
+        "name":"Big Show",
+        "str": "Str: 96",
+        "height":"Height: 7.0",
+        "weight":"Weight: 383",
+        "agility":"Agility: 65",
+        "stamina":"Stamina: 62",
+        "tough":"Toughness: 79",
+        "img":"./images/players/BigShow.png"
+    },
+    {
+        "name":"Mark Henry",
+        "str": "Str: 95",
+        "height":"Height: 6.4",
+        "weight":"Weight: 363",
+        "agility":"Agility: 60",
+        "stamina":"Stamina: 60",
+        "tough":"Toughness: 75",
+        "img":"./images/players/Mark.png"
+    },
+    {
+        "name":"Great Khali",
+        "str": "Str: 92",
+        "height":"Height: 7.1",
+        "weight":"Weight: 347",
+        "agility":"Agility: 54",
+        "stamina":"Stamina: 62",
+        "tough":"Toughness: 72",
+        "img":"./images/players/Khali.png"
+    },
+    {
+        "name":"Randy Ortan",
+        "str": "Str: 78",
+        "height":"Height: 6.5",
+        "weight":"Weight: 250",
+        "agility":"Agility: 72",
+        "stamina":"Stamina: 77",
+        "tough":"Toughness: 74",
+        "img":"./images/players/randy.png"
+    },
+    {
+        "name":"Brawn Strowman",
+        "str": "Str: 95",
+        "height":"Height: 6.9",
+        "weight":"Weight: 385",
+        "agility":"Agility: 70",
+        "stamina":"Stamina: 76",
+        "tough":"Toughness: 87",
+        "img":"./images/players/brawn.png"
     }
 ]

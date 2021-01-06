@@ -155,3 +155,67 @@ CARD
 .card_deck .card .info section:hover {
   background: linear-gradient(#ff4757, #2f3542);
 }
+
+/*****************
+Manual Player 
+*******************/
+.card_deck .player_inp {
+  position: absolute;
+  bottom: -120px;
+  width: 25vw;
+  transform: skewY(10deg);
+}
+.card_deck .player_inp input {
+  border: none;
+  outline: none;
+  width: 90%;
+  background-color: whitesmoke;
+  color: #2f3542;
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.2rem;
+  position: relative;
+}
+.card_deck .player_inp input::-webkit-outer-spin-button,
+.card_deck .player_inp input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.card_deck .player_inp input[type="number"] {
+  -moz-appearance: textfield;
+}
+.card_deck .player_inp .throw {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins";
+  letter-spacing: 2px;
+  cursor: pointer;
+  background-color: #000;
+  color: whitesmoke;
+  border: 2px solid black;
+  padding: 1px;
+  transition: 0.3s;
+}
+.see_cards {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins";
+  letter-spacing: 2px;
+  cursor: pointer;
+  background-color: whitesmoke;
+  border: none;
+  color: #000;
+  transition: 0.3s;
+  padding: 0.2rem 0.4rem;
+  border-radius: 1px;
+}
+.card_deck .player_inp .see_cards:hover {
+  background-color: #000;
+  color: whitesmoke;
+}

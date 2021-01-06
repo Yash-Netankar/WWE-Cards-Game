@@ -53,7 +53,52 @@
     <!--****************
     PLAYER VS COMPUTER
     *******************-->
-    <div class="card_game_container"></div>
+    <div class="card_game_container">
+      <!-- deck -->
+      <div class="card_deck manual_player_card_deck">
+        <div class="logo">
+          <img src="./images/WWElogo.png" alt="WWE LOGO" />
+        </div>
+        <div class="attrBtn_div">
+          <h1>You Bet On</h1>
+          <button class="attrBtn" type="button" value="strength">
+            Strength
+          </button>
+          <button class="attrBtn" type="button" value="height">Height</button>
+          <button class="attrBtn" type="button" value="weight">Weight</button>
+          <button class="attrBtn" type="button" value="stamina">Stamina</button>
+          <button class="attrBtn" type="button" value="agility">Agility</button>
+          <button class="attrBtn" type="button" value="toughness">
+            Toughness
+          </button>
+        </div>
+        <h1>WWE Trump Cards</h1>
+        <!-- deck -->
+        <!-- cards -->
+        <div class="card manual_player_card">
+          <div class="superstar">
+            <img />
+          </div>
+          <h1 class="player_name"></h1>
+          <div class="info">
+            <section class="str"></section>
+            <section class="height"></section>
+            <section class="weight"></section>
+            <section class="stamina"></section>
+            <section class="agility"></section>
+            <section class="toughness"></section>
+          </div>
+        </div>
+        <!-- cards -->
+        <!-- player input container -->
+        <div class="player_inp">
+          <input type="number" placeholder="Enter Card Number" id="ip" />
+          <button class="throw">Throw</button>
+          <button class="see_cards">See All Your Cards</button>
+        </div>
+        <!-- player input container -->
+      </div>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
