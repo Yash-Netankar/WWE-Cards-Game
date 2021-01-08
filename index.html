@@ -72,7 +72,7 @@
             Toughness
           </button>
         </div>
-        <h1>WWE Trump Cards</h1>
+        <h1 id="man_cards_left">WWE Trump Cards</h1>
         <!-- deck -->
         <!-- cards -->
         <div class="card manual_player_card">
@@ -98,6 +98,13 @@
         </div>
         <!-- player input container -->
       </div>
+    </div>
+    <!-- result modal -->
+    <div class="result_modal">
+      <h1>You Lost This Round</h1>
+      <h2>Which Card Would You Like To Give Up</h2>
+      <input type="number" id="give_up_card" placeholder="Enter Card No." />
+      <button type="button" id="give_up_btn">Give Up</button>
     </div>
     <script src="./index.js"></script>
   </body>

@@ -23,6 +23,7 @@ let arttr_btn_value = "strength";
 
 // global arrays
 let man_attr_arr = [];
+let comp_attr_arr = [];
 let all_attr_arr = [];
 
 //arrays for players
@@ -129,7 +130,7 @@ const renderHTML = (no_of_players, data) =>{
                 Toughness
             </button>
         </div>
-    <h1>WWE Trump Cards</h1>
+    <h1 class = "comp_card_left${i+1}">WWE Trump Cards</h1>
         <div class="card card_comp">
             <div class="superstar">
                 <img />
@@ -148,13 +149,11 @@ const renderHTML = (no_of_players, data) =>{
     `;
     document.querySelector(".card_game_container").insertAdjacentHTML("beforeend",card_deck);
 }
-    
     // calling func. to show player info on cards
     ShowPlayerAttr(data);
     
     // showing cards on clicking the attribute btn on deck
     const attrBtn = document.querySelectorAll(".attrBtn");
-    
     attrBtn.forEach(btn=>{
         btn.addEventListener("click", ()=>{
             arttr_btn_value = btn.value;
@@ -165,19 +164,23 @@ const renderHTML = (no_of_players, data) =>{
 // showing palyer info on cards
 const ShowPlayerAttr = (data)=>{
     document.querySelector(".throw").addEventListener("click", ()=>{
+        // emptying array
+        man_attr_arr = [];
+        all_attr_arr = [];
+        comp_attr_arr= [];
         // card no number
         let card_no = document.querySelector("#ip").value;
         if(card_no>=1 && card_no<= player_arr1.length){
             manual_player_card(card_no-1);
             computer_player();
+            compare();
         }
         else(
             alert(`Enter Card Number Between 1 to ${player_arr1.length}`)
         )
-        console.log(man_attr_arr ,all_attr_arr);
     });
 }
-// manual player game logic
+// manual player logic
 const manual_player_card = (card_no) =>{
     // getting player elements
     pname=document.querySelector(".manual_player_card_deck .manual_player_card .player_name");
@@ -208,7 +211,7 @@ const manual_player_card = (card_no) =>{
     }
 }
 
-// computer player game logic
+// computer player logic
 const computer_player = ()=>{
     let cnt = 1;
     if(no_of_players==2){
@@ -303,13 +306,61 @@ const showCompCard = (cnt)=>{
     }
 }
 
-// game logic
+/***************************
+game logic begins from here
+******************************/
 const play = (arr ,attr, manual_player=false)=>{
     if(manual_player){
         man_attr_arr.push(attr);
     }
+    else{
+        comp_attr_arr.push(attr);
+    }
     all_attr_arr.push(attr);
-    let lowest_attr = all_attr_arr.sort((a,b)=>a-b);
-    console.log("Sorted array" ,lowest_attr);
-    
+}
+
+// compare the attributes
+const compare = ()=>{
+    let lowest = all_attr_arr.sort((a,b)=>a-b)[0];
+    let highest = all_attr_arr.sort((a,b)=>b-a)[0];
+    let popped;
+    let remove = -1;
+    if(lowest===man_attr_arr[0] && lowest!="" && lowest >=1){
+        document.querySelector(".result_modal").classList.add("show");
+        document.querySelector(".card_deck").style.pointerEvents = "none";
+        // clicking give up btn
+        document.getElementById("give_up_btn").addEventListener("click", (e)=>{
+        remove = document.querySelector("#give_up_card").value-1;
+        if(remove>=0 && remove<player_arr1.length){
+                popped = player_arr1.splice(remove, 1);
+                // giving popped element to highest ranking player
+                let index = comp_attr_arr.indexOf(highest);
+                index ==-1 ? index=0 : index=index;
+                if( popped!=undefined && index == 0) player_arr2.push(popped[0]);
+                else if( popped!=undefined && index == 1) player_arr3.push(popped[0]);
+                else if( popped!=undefined && index == 2) player_arr4.push(popped[0]);
+                else if( popped!=undefined && index == 3) player_arr5.push(popped[0]);
+                else if( popped!=undefined && index == 4) player_arr6.push(popped[0]);
+                // removing several classes
+                e.stopImmediatePropagation();
+                document.querySelector(".result_modal").classList.remove("show");
+                document.querySelector(".card_deck").style.pointerEvents = "all";
+                // remove the card now
+                let all_cards = document.querySelectorAll(".card");
+                all_cards.forEach(card=>{
+                    card.classList.remove("show");
+                });
+            }
+            else{
+                alert(`Enter Card no Between 1 and ${player_arr1.length}`);
+            }
+        });
+    }
+    // displaying how many cards left for players
+    document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+    document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+    document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
+    // document.querySelector(`.comp_card_left3`).innerText = `${player_arr4.length} Cards Left`;
+    // document.querySelector(`.comp_card_left4`).innerText = `${player_arr5.length} Cards Left`;
+    // document.querySelector(`.comp_card_left5`).innerText = `${player_arr6.length} Cards Left`;
 }

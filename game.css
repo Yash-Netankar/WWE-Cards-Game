@@ -219,3 +219,63 @@ Manual Player
   background-color: #000;
   color: whitesmoke;
 }
+
+/* result modal */
+.result_modal {
+  width: 50%;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  text-align: center;
+  line-height: 2.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  pointer-events: none;
+}
+.result_modal.show {
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: all;
+}
+.result_modal h1,
+.result_modal h2 {
+  color: #ff3838;
+  text-shadow: 0 0 1px black;
+  word-spacing: 3px;
+  letter-spacing: 1px;
+}
+.result_modal input {
+  border: none;
+  outline: none;
+  width: 40%;
+  background-color: whitesmoke;
+  color: #2f3542;
+  font-family: "Poppins";
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1px;
+}
+.result_modal input::-webkit-outer-spin-button,
+.result_modal input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.result_modal button {
+  cursor: pointer;
+  background: transparent;
+  color: #ecf0f1;
+  outline: none;
+  border: none;
+  padding: 0.238rem 0.6rem;
+  transition: 0.2s;
+  font-size: 0.9rem;
+  text-shadow: 0 0 1px #444;
+  font-family: "Poppins";
+  background: #333;
+}
+.result_modal button:hover {
+  background: #ff3838;
+  color: white;
+}
