@@ -231,7 +231,7 @@ Manual Player
   text-align: center;
   line-height: 2.5rem;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
   z-index: 100;
   pointer-events: none;
 }

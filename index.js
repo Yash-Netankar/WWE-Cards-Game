@@ -4,14 +4,14 @@ const vs_btns = document.querySelectorAll(".vs_button");
 const play_btn = document.querySelector(".play_btn");
 
 // player info vars
-let pname="";
-let str="";
-let height="";
-let weight="";
-let agility="";
-let stamina="";
-let tough="";
-let img="";
+let pname = "";
+let str = "";
+let height = "";
+let weight = "";
+let agility = "";
+let stamina = "";
+let tough = "";
+let img = "";
 
 // audio
 const audio = new Audio("./button_audio.mp3");
@@ -34,23 +34,29 @@ let player_arr4 = [];
 let player_arr5 = [];
 let player_arr6 = [];
 
+//computer players current card record
+let comp1_curr_card = 0;
+let comp2_curr_card = 0;
+let comp3_curr_card = 0;
+let comp4_curr_card = 0;
+let comp5_curr_card = 0;
 
 /*********************************
 Button Clicks and sending data
 ************************************/
-btns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
+btns.forEach(btn => {
+    btn.addEventListener("click", () => {
         audio.play();
-        no_of_players=btn.value;
+        no_of_players = btn.value;
     })
 });
-vs_btns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
+vs_btns.forEach(btn => {
+    btn.addEventListener("click", () => {
         audio.play();
-        vs_btn_value=btn.value;
+        vs_btn_value = btn.value;
     })
 });
-play_btn.addEventListener("click", ()=>{
+play_btn.addEventListener("click", () => {
     document.querySelector(".container").classList.add("hide");
     document.querySelector(".card_game_container").classList.add("show");
     getData(no_of_players, vs_btn_value);
@@ -61,11 +67,11 @@ play_btn.addEventListener("click", ()=>{
 Function receiving data &
 getting players from ajax call
 ************************************/
-const getData = (no_of_players=0, vs="computer")=>{
-    if(vs == "computer"){
+const getData = (no_of_players = 0, vs = "computer") => {
+    if (vs == "computer") {
         let req = new XMLHttpRequest();
         req.open("GET", "http://127.0.0.1:5500/data.json", true);
-        req.onload = ()=>{
+        req.onload = () => {
             const data = JSON.parse(req.responseText);
             distributeArr(data, no_of_players);
             renderHTML(no_of_players, data);
@@ -75,31 +81,31 @@ const getData = (no_of_players=0, vs="computer")=>{
 }
 
 // distributing array equally to players
-const distributeArr= (data, no_of_players)=>{
+const distributeArr = (data, no_of_players) => {
     // for 2 players
-    if(no_of_players==2){
+    if (no_of_players == 2) {
         player_arr1 = data.slice(0, 6);
         player_arr2 = data.slice(6, 12);
     }
-    else if(no_of_players==3){
+    else if (no_of_players == 3) {
         player_arr1 = data.slice(0, 4);
         player_arr2 = data.slice(4, 8);
         player_arr3 = data.slice(8, 12);
     }
-    else if(no_of_players==4){
+    else if (no_of_players == 4) {
         player_arr1 = data.slice(0, 3);
         player_arr2 = data.slice(3, 6);
         player_arr3 = data.slice(6, 9);
         player_arr4 = data.slice(9, 12);
     }
-    else if(no_of_players==5){
+    else if (no_of_players == 5) {
         player_arr1 = data.slice(0, 3);
         player_arr2 = data.slice(3, 6);
         player_arr3 = data.slice(6, 8);
         player_arr4 = data.slice(8, 10);
         player_arr5 = data.slice(10, 12);
     }
-    else if(no_of_players==6){
+    else if (no_of_players == 6) {
         player_arr1 = data.slice(0, 2);
         player_arr2 = data.slice(2, 4);
         player_arr3 = data.slice(4, 6);
@@ -110,10 +116,10 @@ const distributeArr= (data, no_of_players)=>{
 }
 
 // rendering html for all players
-const renderHTML = (no_of_players, data) =>{
-    for(let i=0; i<no_of_players-1;i++){
-    let card_deck = `
-    <div class="card_deck card_deck_comp${i+1}">
+const renderHTML = (no_of_players, data) => {
+    for (let i = 0; i < no_of_players - 1; i++) {
+        let card_deck = `
+    <div class="card_deck card_deck_comp${i + 1}">
         <div class="logo">
             <img src="./images/WWElogo.png" alt="WWE LOGO" />
         </div>
@@ -130,7 +136,7 @@ const renderHTML = (no_of_players, data) =>{
                 Toughness
             </button>
         </div>
-    <h1 class = "comp_card_left${i+1}">WWE Trump Cards</h1>
+    <h1 class = "comp_card_left${i + 1}">WWE Trump Cards</h1>
         <div class="card card_comp">
             <div class="superstar">
                 <img />
@@ -147,50 +153,49 @@ const renderHTML = (no_of_players, data) =>{
         </div>
   </div>
     `;
-    document.querySelector(".card_game_container").insertAdjacentHTML("beforeend",card_deck);
-}
+        document.querySelector(".card_game_container").insertAdjacentHTML("beforeend", card_deck);
+    }
     // calling func. to show player info on cards
-    ShowPlayerAttr(data);
-    
-    // showing cards on clicking the attribute btn on deck
-    const attrBtn = document.querySelectorAll(".attrBtn");
-    attrBtn.forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-            arttr_btn_value = btn.value;
-        })
-    })
+    ShowPlayerAttr();
 }
 
 // showing palyer info on cards
-const ShowPlayerAttr = (data)=>{
-    document.querySelector(".throw").addEventListener("click", ()=>{
+const ShowPlayerAttr = () => {
+    // showing cards on clicking the attribute btn on deck
+    const attrBtn = document.querySelectorAll(".attrBtn");
+    attrBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            arttr_btn_value = btn.value;
+        });
+    });
+    document.querySelector(".throw").addEventListener("click", () => {
         // emptying array
         man_attr_arr = [];
         all_attr_arr = [];
-        comp_attr_arr= [];
+        comp_attr_arr = [];
         // card no number
         let card_no = document.querySelector("#ip").value;
-        if(card_no>=1 && card_no<= player_arr1.length){
-            manual_player_card(card_no-1);
+        if (card_no >= 1 && card_no <= player_arr1.length) {
+            manual_player_card(card_no - 1);
             computer_player();
             compare();
         }
-        else(
+        else (
             alert(`Enter Card Number Between 1 to ${player_arr1.length}`)
         )
     });
 }
 // manual player logic
-const manual_player_card = (card_no) =>{
+const manual_player_card = (card_no) => {
     // getting player elements
-    pname=document.querySelector(".manual_player_card_deck .manual_player_card .player_name");
-    str=document.querySelector(".manual_player_card_deck .manual_player_card .info .str");
-    height=document.querySelector(".manual_player_card_deck .manual_player_card .info .height");
-    weight=document.querySelector(".manual_player_card_deck .manual_player_card .info .weight");
-    stamina=document.querySelector(".manual_player_card_deck .manual_player_card .info .stamina");
-    tough=document.querySelector(".manual_player_card_deck .manual_player_card .info .toughness");
-    agility=document.querySelector(".manual_player_card_deck .manual_player_card .info .agility");
-    img=document.querySelector(".manual_player_card_deck .manual_player_card .superstar img");
+    pname = document.querySelector(".manual_player_card_deck .manual_player_card .player_name");
+    str = document.querySelector(".manual_player_card_deck .manual_player_card .info .str");
+    height = document.querySelector(".manual_player_card_deck .manual_player_card .info .height");
+    weight = document.querySelector(".manual_player_card_deck .manual_player_card .info .weight");
+    stamina = document.querySelector(".manual_player_card_deck .manual_player_card .info .stamina");
+    tough = document.querySelector(".manual_player_card_deck .manual_player_card .info .toughness");
+    agility = document.querySelector(".manual_player_card_deck .manual_player_card .info .agility");
+    img = document.querySelector(".manual_player_card_deck .manual_player_card .superstar img");
 
     // setting values to cards
     pname.textContent = player_arr1[card_no].name;
@@ -206,36 +211,40 @@ const manual_player_card = (card_no) =>{
     let card = document.querySelector(".manual_player_card_deck .manual_player_card");
     card.classList.add("show");
 
-    if(arttr_btn_value == "strength"){
-        play( null ,parseInt(player_arr1[card_no].str.slice(-2)), true);
+    if (arttr_btn_value == "strength") {
+        play(parseInt(player_arr1[card_no].str.slice(-2)), true);
+    }
+    else if (arttr_btn_value == "height") {
+        play(parseFloat(player_arr1[card_no].height.slice(-4)), true);
+    }
+    else if (arttr_btn_value == "weight") {
+        play(parseInt(player_arr1[card_no].weight.slice(-3)), true);
+    }
+    else if (arttr_btn_value == "stamina") {
+        play(parseInt(player_arr1[card_no].stamina.slice(-2)), true);
+    }
+    else if (arttr_btn_value == "agility") {
+        play(parseInt(player_arr1[card_no].agility.slice(-2)), true);
+    }
+    else if(arttr_btn_value == "toughness"){
+        play(parseInt(player_arr1[card_no].tough.slice(-2)), true);
     }
 }
 
 // computer player logic
-const computer_player = ()=>{
+const computer_player = () => {
     let cnt = 1;
-    if(no_of_players==2){
+    if (no_of_players == 2) {
         showCompCard(cnt);
     }
-    else if(no_of_players==3){
+    else if (no_of_players == 3) {
         showCompCard(cnt);
         cnt++;
         showCompCard(cnt);
         // cnt++;
         // showCompCard(cnt);
     }
-    else if(no_of_players==4){
-        showCompCard(cnt);
-        cnt++;
-        showCompCard(cnt);
-        cnt++;
-        showCompCard(cnt);
-        // cnt++;
-        // showCompCard(cnt);
-    }
-    else if(no_of_players==5){
-        showCompCard(cnt);
-        cnt++;
+    else if (no_of_players == 4) {
         showCompCard(cnt);
         cnt++;
         showCompCard(cnt);
@@ -244,7 +253,18 @@ const computer_player = ()=>{
         // cnt++;
         // showCompCard(cnt);
     }
-    else if(no_of_players==6){
+    else if (no_of_players == 5) {
+        showCompCard(cnt);
+        cnt++;
+        showCompCard(cnt);
+        cnt++;
+        showCompCard(cnt);
+        cnt++;
+        showCompCard(cnt);
+        // cnt++;
+        // showCompCard(cnt);
+    }
+    else if (no_of_players == 6) {
         showCompCard(cnt);
         cnt++;
         showCompCard(cnt);
@@ -257,37 +277,39 @@ const computer_player = ()=>{
     }
 }
 
-const showCompCard = (cnt)=>{
+const showCompCard = (cnt) => {
     // getting computer attributes
-    pname=document.querySelector(`.card_deck_comp${cnt} .card_comp .player_name`);
-    str=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .str`);
-    height=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .height`);
-    weight=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .weight`);
-    stamina=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .stamina`);
-    tough=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .toughness`);
-    agility=document.querySelector(`.card_deck_comp${cnt} .card_comp .info .agility`);
-    img=document.querySelector(`.card_deck_comp${cnt} .card_comp .superstar img`);
+    pname = document.querySelector(`.card_deck_comp${cnt} .card_comp .player_name`);
+    str = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .str`);
+    height = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .height`);
+    weight = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .weight`);
+    stamina = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .stamina`);
+    tough = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .toughness`);
+    agility = document.querySelector(`.card_deck_comp${cnt} .card_comp .info .agility`);
+    img = document.querySelector(`.card_deck_comp${cnt} .card_comp .superstar img`);
 
     // setting arrays that are allocated to players
     let arr = [];
-    if(cnt==1){
+    if (cnt == 1) {
         arr = player_arr2;
     }
-    else if(cnt==2){
+    else if (cnt == 2) {
         arr = player_arr3;
     }
-    else if(cnt==3){
+    else if (cnt == 3) {
         arr = player_arr4;
     }
-    else if(cnt==4){
+    else if (cnt == 4) {
         arr = player_arr5;
     }
-    else if(cnt==5){
+    else if (cnt == 5) {
         arr = player_arr6;
     }
 
+    // random number
+    let card_no = Math.floor(Math.random() * arr.length);
+    
     // setting up comp cards
-    let card_no = Math.floor(Math.random()*arr.length);
     pname.textContent = arr[card_no].name;
     str.textContent = arr[card_no].str;
     height.textContent = arr[card_no].height;
@@ -296,71 +318,197 @@ const showCompCard = (cnt)=>{
     tough.textContent = arr[card_no].tough;
     agility.textContent = arr[card_no].agility;
     img.src = arr[card_no].img;
-
+    
     // showing up comp card
     let comp_card = document.querySelector(`.card_deck_comp${cnt} .card_comp`);
     comp_card.classList.add("show");
+    
+    // getting current lowest card for loosing it
+    if(cnt==1) comp1_curr_card = card_no;
+    else if(cnt==2) comp2_curr_card = card_no;
+    else if(cnt==3) comp3_curr_card = card_no;
+    else if(cnt==4) comp4_curr_card = card_no;
+    else if(cnt==5) comp5_curr_card = card_no;
 
-    if(arttr_btn_value == "strength"){
-        play( arr ,parseInt(arr[card_no].str.slice(-2)));
+    if (arttr_btn_value == "strength") {
+        play(parseInt(arr[card_no].str.slice(-2)));
+    }
+    else if (arttr_btn_value == "height") {
+        play(parseFloat(arr[card_no].height.slice(-4)));
+    }
+    else if (arttr_btn_value == "weight") {
+        play(parseInt(arr[card_no].weight.slice(-3)));
+    }
+    else if (arttr_btn_value == "stamina") {
+        play(parseInt(arr[card_no].stamina.slice(-2)));
+    }
+    else if (arttr_btn_value == "agility") {
+        play(parseInt(arr[card_no].agility.slice(-2)));
+    }
+    else if(arttr_btn_value == "toughness"){
+        play(parseInt(arr[card_no].tough.slice(-2)));
     }
 }
 
 /***************************
 game logic begins from here
 ******************************/
-const play = (arr ,attr, manual_player=false)=>{
-    if(manual_player){
+const play = (attr, manual_player = false) => {
+    if (manual_player) {
         man_attr_arr.push(attr);
     }
-    else{
+    else {
         comp_attr_arr.push(attr);
     }
     all_attr_arr.push(attr);
+    console.log(arttr_btn_value);
 }
 
 // compare the attributes
-const compare = ()=>{
-    let lowest = all_attr_arr.sort((a,b)=>a-b)[0];
-    let highest = all_attr_arr.sort((a,b)=>b-a)[0];
+const compare = () => {
+    let lowest = all_attr_arr.sort((a, b) => a - b)[0];
+    let highest = all_attr_arr.sort((a, b) => b - a)[0];
     let popped;
     let remove = -1;
-    if(lowest===man_attr_arr[0] && lowest!="" && lowest >=1){
+    if (lowest === man_attr_arr[0] && lowest != "" && lowest >= 1) {
         document.querySelector(".result_modal").classList.add("show");
         document.querySelector(".card_deck").style.pointerEvents = "none";
         // clicking give up btn
-        document.getElementById("give_up_btn").addEventListener("click", (e)=>{
-        remove = document.querySelector("#give_up_card").value-1;
-        if(remove>=0 && remove<player_arr1.length){
+        document.getElementById("give_up_btn").addEventListener("click", (e) => {
+            remove = document.querySelector("#give_up_card").value - 1;
+            if (remove >= 0 && remove < player_arr1.length) {
                 popped = player_arr1.splice(remove, 1);
                 // giving popped element to highest ranking player
                 let index = comp_attr_arr.indexOf(highest);
-                index ==-1 ? index=0 : index=index;
-                if( popped!=undefined && index == 0) player_arr2.push(popped[0]);
-                else if( popped!=undefined && index == 1) player_arr3.push(popped[0]);
-                else if( popped!=undefined && index == 2) player_arr4.push(popped[0]);
-                else if( popped!=undefined && index == 3) player_arr5.push(popped[0]);
-                else if( popped!=undefined && index == 4) player_arr6.push(popped[0]);
+                index == -1 ? index = 0 : index = index;
+                if (popped != undefined && index == 0) player_arr2.push(popped[0]);
+                else if (popped != undefined && index == 1) player_arr3.push(popped[0]);
+                else if (popped != undefined && index == 2) player_arr4.push(popped[0]);
+                else if (popped != undefined && index == 3) player_arr5.push(popped[0]);
+                else if (popped != undefined && index == 4) player_arr6.push(popped[0]);
+                updateLength();
                 // removing several classes
                 e.stopImmediatePropagation();
                 document.querySelector(".result_modal").classList.remove("show");
                 document.querySelector(".card_deck").style.pointerEvents = "all";
                 // remove the card now
                 let all_cards = document.querySelectorAll(".card");
-                all_cards.forEach(card=>{
+                all_cards.forEach(card => {
                     card.classList.remove("show");
                 });
             }
-            else{
+            else {
                 alert(`Enter Card no Between 1 and ${player_arr1.length}`);
             }
         });
     }
-    // displaying how many cards left for players
-    document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
-    document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
-    document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
-    // document.querySelector(`.comp_card_left3`).innerText = `${player_arr4.length} Cards Left`;
-    // document.querySelector(`.comp_card_left4`).innerText = `${player_arr5.length} Cards Left`;
-    // document.querySelector(`.comp_card_left5`).innerText = `${player_arr6.length} Cards Left`;
+    else {
+        let all_attr_arr_demo = man_attr_arr.concat(comp_attr_arr);
+        console.log(all_attr_arr_demo);
+        let index = comp_attr_arr.indexOf(lowest);
+        let indexH = all_attr_arr_demo.indexOf(highest);
+        let popped;
+
+        if(index==0){
+            popped = player_arr2.splice(comp1_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        else if(index==1){
+            popped = player_arr3.splice(comp2_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        else if(index==2){
+            popped = player_arr4.splice(comp3_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        else if(index==3){
+            popped = player_arr4.splice(comp3_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        else if(index==4){
+            popped = player_arr4.splice(comp3_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        else if(index==5){
+            popped = player_arr4.splice(comp3_curr_card, 1);
+            if(indexH==0) player_arr1.push(popped[0]);
+            else if(indexH ==1) player_arr2.push(popped[0]);
+            else if(indexH ==2) player_arr3.push(popped[0]);
+            else if(indexH ==3) player_arr4.push(popped[0]);
+            else if(indexH ==4) player_arr5.push(popped[0]);
+            else player_arr6.push(popped[0]);
+            updateLength();
+        }
+        setTimeout(() => {
+            let all_cards = document.querySelectorAll(".card");
+            all_cards.forEach(card => {
+            card.classList.remove("show");
+        });
+        }, 10000);
+    }
+    console.log(man_attr_arr);
+    console.log(comp_attr_arr);
+}
+// displaying how many cards left for players
+const updateLength = () => {
+    if (no_of_players == 2) {
+        document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+        document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+    }
+    else if (no_of_players == 3) {
+        document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+        document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+        document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
+    }
+    else if (no_of_players == 4) {
+        document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+        document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+        document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
+        document.querySelector(`.comp_card_left3`).innerText = `${player_arr4.length} Cards Left`;
+    }
+    else if (no_of_players == 5) {
+        document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+        document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+        document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
+        document.querySelector(`.comp_card_left3`).innerText = `${player_arr4.length} Cards Left`;
+        document.querySelector(`.comp_card_left4`).innerText = `${player_arr5.length} Cards Left`;
+    }
+    else if (no_of_players == 6) {
+        document.getElementById("man_cards_left").innerText = `${player_arr1.length} Cards Left`;
+        document.querySelector(`.comp_card_left1`).innerText = `${player_arr2.length} Cards Left`;
+        document.querySelector(`.comp_card_left2`).innerText = `${player_arr3.length} Cards Left`;
+        document.querySelector(`.comp_card_left3`).innerText = `${player_arr4.length} Cards Left`;
+        document.querySelector(`.comp_card_left4`).innerText = `${player_arr5.length} Cards Left`;
+        document.querySelector(`.comp_card_left5`).innerText = `${player_arr6.length} Cards Left`;
+    }
 }

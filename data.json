@@ -12,7 +12,7 @@
     {
         "name":"Brock Lesnar",
         "str": "Str: 87",
-        "height":"Height: 6.4",
+        "height":"Height: 6.04",
         "weight":"Weight: 295",
         "agility":"Agility: 64",
         "stamina":"Stamina: 75",
@@ -22,7 +22,7 @@
     {
         "name":"Goldberg",
         "str": "Str: 90",
-        "height":"Height: 6.4",
+        "height":"Height: 6.04",
         "weight":"Weight: 290",
         "agility":"Agility: 70",
         "stamina":"Stamina: 70",
@@ -32,7 +32,7 @@
     {
         "name":"Roman Reigns",
         "str": "Str: 80",
-        "height":"Height: 6.2",
+        "height":"Height: 6.02",
         "weight":"Weight: 264",
         "agility":"Agility: 68",
         "stamina":"Stamina: 70",
@@ -42,7 +42,7 @@
     {
         "name":"Jhon Cena",
         "str": "Str: 82",
-        "height":"Height: 6.1",
+        "height":"Height: 6.01",
         "weight":"Weight: 251",
         "agility":"Agility: 80",
         "stamina":"Stamina: 85",
@@ -52,7 +52,7 @@
     {
         "name":"Kane",
         "str": "Str: 89",
-        "height":"Height: 7.0",
+        "height":"Height: 7.00",
         "weight":"Weight: 323",
         "agility":"Agility: 70",
         "stamina":"Stamina: 70",
@@ -62,7 +62,7 @@
     {
         "name":"Triple H",
         "str": "Str: 80",
-        "height":"Height: 6.4",
+        "height":"Height: 6.04",
         "weight":"Weight: 255",
         "agility":"Agility: 73",
         "stamina":"Stamina: 80",
@@ -72,7 +72,7 @@
     {
         "name":"Rey Mysterio",
         "str": "Str: 60",
-        "height":"Height: 5.6",
+        "height":"Height: 5.06",
         "weight":"Weight: 175",
         "agility":"Agility: 91",
         "stamina":"Stamina: 86",
@@ -82,7 +82,7 @@
     {
         "name":"Big Show",
         "str": "Str: 96",
-        "height":"Height: 7.0",
+        "height":"Height: 7.00",
         "weight":"Weight: 383",
         "agility":"Agility: 65",
         "stamina":"Stamina: 62",
@@ -92,7 +92,7 @@
     {
         "name":"Mark Henry",
         "str": "Str: 95",
-        "height":"Height: 6.4",
+        "height":"Height: 6.04",
         "weight":"Weight: 363",
         "agility":"Agility: 60",
         "stamina":"Stamina: 60",
@@ -102,7 +102,7 @@
     {
         "name":"Great Khali",
         "str": "Str: 93",
-        "height":"Height: 7.1",
+        "height":"Height: 7.01",
         "weight":"Weight: 347",
         "agility":"Agility: 54",
         "stamina":"Stamina: 62",
@@ -112,7 +112,7 @@
     {
         "name":"Randy Ortan",
         "str": "Str: 78",
-        "height":"Height: 6.5",
+        "height":"Height: 6.05",
         "weight":"Weight: 250",
         "agility":"Agility: 72",
         "stamina":"Stamina: 77",
@@ -122,7 +122,7 @@
     {
         "name":"Brawn Strowman",
         "str": "Str: 95",
-        "height":"Height: 6.9",
+        "height":"Height: 6.09",
         "weight":"Weight: 385",
         "agility":"Agility: 70",
         "stamina":"Stamina: 76",
