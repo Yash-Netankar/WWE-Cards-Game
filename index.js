@@ -70,7 +70,7 @@ getting players from ajax call
 const getData = (vs = "computer") => {
     if (vs == "computer") {
         let req = new XMLHttpRequest();
-        req.open("GET", "http://127.0.0.1:5500/data.json", true);
+        req.open("GET", "https://github.com/Yash-Netankar/WWE-Cards-Game/blob/master/data.json", true);
         req.onload = () => {
             const data = JSON.parse(req.responseText);
             distributeArr(data);
